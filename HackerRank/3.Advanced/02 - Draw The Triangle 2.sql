@@ -1,0 +1,12 @@
+DECLARE @LINE VARCHAR(50) = '';
+
+DECLARE @COLUMNS INT = 20;
+DECLARE @TEMP INT = 0;
+
+
+WHILE @COLUMNS > @TEMP
+    BEGIN
+        SET @LINE = @LINE + '* '
+        PRINT(@LINE)
+        SET @TEMP = @TEMP + 1
+    END
