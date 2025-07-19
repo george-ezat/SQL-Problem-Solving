@@ -11,7 +11,7 @@ I am actively solving problems and honing my skills on these platforms:
 [![DataLemur](https://img.shields.io/badge/DataLemur-43A047?style=for-the-badge&logo=postgresql&logoColor=white)](https://datalemur.com/)
 [![LeetCode](https://img.shields.io/badge/LeetCode-FFA116?style=for-the-badge&logo=leetcode&logoColor=black)](https://leetcode.com/)
 [![StrataScratch](https://img.shields.io/badge/StrataScratch-3674B2?style=for-the-badge&logo=data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZmlsbD0iI2ZmZmZmZiIgZD0iTTEyIDJDNi40OCAyIDIgNi40OCAyIDEyczQuNDggMTAgMTAgMTAgMTAtNC40OCAxMC0xMFMxNy41MiAyIDEyIDJ6bTAgMThjLTQuNDEgMC04LTMuNTktOC04czMuNTktOCA4IDggOCAzLjU5IDggOC0zLjU5IDgtOCA4eiIvPjwvc3ZnPg==)](https://www.stratascratch.com/)
-[![HackerRank](https://img.shields.io/badge/HackerRank-149414?style=for-the-badge&logo=hackerrank&logoColor=white)](https://www.sql-practice.com/)
+[![HackerRank](https://img.shields.io/badge/HackerRank-149414?style=for-the-badge&logo=hackerrank&logoColor=white)](https://www.hackerrank.com/)
 [![SQL Practice](https://img.shields.io/badge/SQL_Practice-00758F?style=for-the-badge&logo=mysql&logoColor=white)](https://www.sql-practice.com/)
 [![InterviewMaster.AI](https://img.shields.io/badge/InterviewMaster-DB2777?style=for-the-badge&logo=openai&logoColor=white)](https://www.interviewmaster.ai/)
 
@@ -21,8 +21,7 @@ This repository showcases a diverse range of SQL skills. My goal is to master bo
 
 | Category                   | Skills Demonstrated                                                                    |
 | -------------------------- | -------------------------------------------------------------------------------------- |
-| **Data Retrieval & Joins** | `SELECT`, `FROM`, `WHERE`, `INNER JOIN`, `LEFT JOIN`, `FULL OUTER JOIN`, `UNION`       |
-| **Advanced Querying**      | `Subqueries`, `Common Table Expressions (CTEs)`                                        |
+| **Advanced Querying**      | `Subqueries`, `CTE`, `JOIN`s                                                           |
 | **Aggregation & Grouping** | `GROUP BY`, `HAVING`, `COUNT()`, `SUM()`, `AVG()`, `MAX()`, `MIN()`                    |
 | **Window Functions**       | `ROW_NUMBER()`, `RANK()`, `DENSE_RANK()`, `LEAD()`, `LAG()`, `PARTITION BY`            |
 | **Data Manipulation**      | `CASE` statements, `CAST`, `CONVERT`, `COALESCE`, `String Functions`, `Date Functions` |
