@@ -31,6 +31,6 @@ This repository showcases a diverse range of SQL skills. My goal is to master bo
 
 I'm always open to new opportunities and collaborations. Feel free to reach out!
 
-<a href="https://www.linkedin.com/in/george-ezat/"> <img alt="Connect with me on LinkedIn" title="Connect with me on LinkedIn" src="https://custom-icon-badges.demolab.com/badge/LinkedIn-Connect-blue?color=1f7daf&labelColor=0e76a8&style=for-the-badge&logo=linkedin-s&label=&logoColor=white"/></a>
+<a href="https://www.linkedin.com/comm/mynetwork/discovery-see-all?usecase=PEOPLE_FOLLOWS&followMember=george-ezat"> <img alt="Connect with me on LinkedIn" title="Connect with me on LinkedIn" src="https://custom-icon-badges.demolab.com/badge/LinkedIn-Connect-blue?color=1f7daf&labelColor=0e76a8&style=for-the-badge&logo=linkedin-s&label=&logoColor=white"/></a>
 <a href="https://github.com/GeorgeEzat?tab=followers">
 <img alt="GitHub followers" title="Follow me on GitHub" src="https://img.shields.io/github/followers/GeorgeEzat?label=Follow&style=for-the-badge&logo=github&color=236ad3&labelColor=1155ba"/></a>
