@@ -5,7 +5,7 @@
 <a href="https://github.com/george-ezat?tab=repositories&q=&type=&language=&sort=stargazers">
     <img alt="GitHub Stars" title="Total stars on GitHub" src="https://custom-icon-badges.demolab.com/github/stars/george-ezat/SQL-Problem-Solving?logo=star&label=Stars&style=flat&color=55960c&cache_buster=2&labelColor=488207&logoColor=White"/>
 </a>
-<img src="https://img.shields.io/github/last-commit/george-ezat/sql-problem-solving?color=CC2927&label=Last Update" alt="Last Update" />
+<img src="https://img.shields.io/github/last-commit/george-ezat/sql-problem-solving?color=CC2927&label=Last%20Update" alt="Last Update" />
 <img src="https://img.shields.io/badge/license-MIT-blue?color=336699" alt="License" />
 <a href="https://www.linkedin.com/comm/mynetwork/discovery-see-all?usecase=PEOPLE_FOLLOWS&followMember=george-ezat" target="_blank">
     <img alt="Connect with me on LinkedIn" title="Follow me on LinkedIn" src="https://custom-icon-badges.demolab.com/badge/LinkedIn-Follow-blue?color=1f7daf&labelColor=0e76a8&style=flat&logo=linkedin-s&label=&logoColor=white"/>
