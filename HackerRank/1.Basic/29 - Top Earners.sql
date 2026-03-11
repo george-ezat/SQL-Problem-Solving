@@ -1,14 +1,14 @@
 SELECT
-    months * salary AS Max_Earnings,
+    months * salary AS max_earnings,
     COUNT(months * salary)
-FROM Employee
+FROM employee
 WHERE
     (months * salary) = (
-        SELECT TOP 1 months * salary AS Max_Earn
-        FROM Employee
-        ORDER BY Max_Earn DESC
+        SELECT TOP 1 months * salary AS max_earn
+        FROM employee
+        ORDER BY max_earn DESC
     )
-GROUP BY (months * salary)
+GROUP BY (months * salary);
 
 -- For MySQL Solution you will replace TOP 1 with LIMIT 1
 

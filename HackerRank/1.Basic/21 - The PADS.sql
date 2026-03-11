@@ -1,33 +1,58 @@
-WITH data1 AS(
-    SELECT
-        CASE
-            WHEN Occupation = 'Actor' THEN CONCAT(name, '(A)')
-            WHEN Occupation = 'Doctor' THEN CONCAT(name, '(D)')
-            WHEN Occupation = 'Singer' THEN CONCAT(name, '(S)')
-            WHEN Occupation = 'Professor' THEN CONCAT(name, '(P)')
-        END AS name,
-        ROW_NUMBER() OVER(ORDER BY Name) AS id
-    FROM OCCUPATIONS
-)
-SELECT name
-FROM data1
-ORDER BY name;
+SELECT CONCAT(Name, '(', LEFT(Occupation, 1), ')')
+FROM Occupations
+ORDER BY Name;
 
-WITH data2 AS(
+SELECT
+    CONCAT(
+        'There are a total of ', COUNT(Name), ' ', LOWER(Occupation), 's.'
+    )
+FROM Occupations
+GROUP BY
+    Occupation
+ORDER BY
+    COUNT(Name),
+    Occupation;
+
+
+-- Other Solution using CASE WHEN
+
+SELECT
+    CASE
+        WHEN Occupation = 'Actor' THEN CONCAT(Name, '(A)')
+        WHEN Occupation = 'Doctor' THEN CONCAT(Name, '(D)')
+        WHEN Occupation = 'Singer' THEN CONCAT(Name, '(S)')
+        WHEN Occupation = 'Professor' THEN CONCAT(Name, '(P)')
+    END
+FROM Occupations
+ORDER BY Name;
+
+WITH Cte AS (
     SELECT
-        CASE
-            WHEN o = 'Doctor' THEN CONCAT('There are a total of ', CAST(c AS CHAR), ' doctors.')
-            WHEN o = 'Actor' THEN CONCAT('There are a total of ', CAST(c AS CHAR), ' actors.')
-            WHEN o = 'Professor' THEN CONCAT('There are a total of ', CAST(c AS CHAR), ' professors.')
-            WHEN o = 'Singer' THEN CONCAT('There are a total of ', CAST(c AS CHAR), ' singers.')
-        END AS details,
-        ROW_NUMBER() OVER(ORDER BY c) as id
-    FROM (
-        SELECT Occupation AS o, COUNT(Occupation) AS c
-        FROM OCCUPATIONS
-        GROUP BY Occupation
-    ) AS T
+        Occupation,
+        COUNT(Name) AS Cnt
+    FROM Occupations
+    GROUP BY Occupation
 )
-SELECT details
-FROM data2
-ORDER BY id;
+
+SELECT
+    CASE
+        WHEN
+            Occupation = 'Doctor'
+            THEN CONCAT('There are a total of ', CAST(Cnt AS CHAR), ' doctors.')
+        WHEN
+            Occupation = 'Actor'
+            THEN CONCAT('There are a total of ', CAST(Cnt AS CHAR), ' actors.')
+        WHEN
+            Occupation = 'Professor'
+            THEN
+                CONCAT(
+                    'There are a total of ', CAST(Cnt AS CHAR), ' professors.'
+                )
+        WHEN
+            Occupation = 'Singer'
+            THEN CONCAT('There are a total of ', CAST(Cnt AS CHAR), ' singers.')
+    END
+FROM Cte
+ORDER BY
+    Cnt,
+    Occupation;

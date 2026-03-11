@@ -1,3 +1,3 @@
 SELECT name
-FROM Employee
+FROM employee
 ORDER BY name;

@@ -1,5 +1,5 @@
 SELECT name
-FROM Employee
+FROM employee
 WHERE
     salary > 2000
     AND months < 10

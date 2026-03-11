@@ -1,18 +1,18 @@
 SELECT
-    C.company_code,
-    C.founder,
-    COUNT(DISTINCT LM.lead_manager_code),
-    COUNT(DISTINCT SM.senior_manager_code),
-    COUNT(DISTINCT M.manager_code),
-    COUNT(DISTINCT E.employee_code)
+    c.company_code,
+    c.founder AS founder_name,
+    COUNT(DISTINCT lm.lead_manager_code) AS lead_managers_count,
+    COUNT(DISTINCT sm.senior_manager_code) AS senior_managers_count,
+    COUNT(DISTINCT m.manager_code) AS managers_count,
+    COUNT(DISTINCT e.employee_code) AS employees_count
 FROM
-    Company AS C
-    INNER JOIN Lead_Manager AS LM ON C.company_code = LM.company_code
-    INNER JOIN Senior_Manager AS SM ON C.company_code = SM.company_code
-    INNER JOIN Manager AS M ON C.company_code = M.company_code
-    INNER JOIN Employee AS E ON C.company_code = E.company_code
+    company AS c
+    INNER JOIN lead_manager AS lm ON c.company_code = lm.company_code
+    INNER JOIN senior_manager AS sm ON c.company_code = sm.company_code
+    INNER JOIN manager AS m ON c.company_code = m.company_code
+    INNER JOIN employee AS e ON c.company_code = e.company_code
 GROUP BY
     c.company_code,
     c.founder
 ORDER BY
-    company_code;
+    c.company_code;

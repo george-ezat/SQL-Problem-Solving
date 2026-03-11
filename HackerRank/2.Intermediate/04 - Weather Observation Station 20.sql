@@ -1,18 +1,21 @@
-SELECT CAST(LAT_N AS DECIMAL(10,4)) AS MEDIAN
-FROM
-    (
-        SELECT
-            LAT_N,
-            ROW_NUMBER() OVER(ORDER BY LAT_N) AS n
-        FROM STATION
-    ) AS T
-WHERE n = ((SELECT COUNT(*) FROM STATION)/2) + 1;
+WITH T AS (
+    SELECT
+        LAT_N,
+        ROW_NUMBER() OVER (ORDER BY LAT_N) AS n
+    FROM STATION
+)
 
--- OR (this function exists in SQL Server)
+SELECT CAST(LAT_N AS DECIMAL(10, 4)) AS MEDIAN
+FROM
+    T
+WHERE n = ((SELECT COUNT(*) FROM STATION) / 2) + 1;
+
+-- OR (this function exists in SQL Server/PostgreSQL)
 
 SELECT TOP 1
     CAST(
-        (PERCENTILE_CONT(0.5) WITHIN GROUP(ORDER BY LAT_N) OVER())
-        AS DECIMAL(10,4)
-        ) AS MEDIAN
+        (PERCENTILE_CONT(0.5) WITHIN GROUP (
+            ORDER BY LAT_N
+        ) OVER ()) AS DECIMAL(10, 4)
+    ) AS MEDIAN
 FROM STATION;

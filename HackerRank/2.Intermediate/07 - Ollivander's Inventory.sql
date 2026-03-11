@@ -2,10 +2,10 @@
 
 WITH CTE AS (
     SELECT
-        W.id AS id,
-        WP.age AS age,
+        W.id,
+        WP.age,
         W.coins_needed AS coins,
-        W.power AS power,
+        W.power,
         ROW_NUMBER() OVER (
             PARTITION BY
                 WP.age,
@@ -14,20 +14,18 @@ WITH CTE AS (
                 W.coins_needed
         ) AS wand_rank
     FROM
-        Wands W
-        JOIN Wands_Property WP ON W.code = WP.code
-    WHERE
-        WP.is_evil = 0
+        Wands AS W
+        INNER JOIN Wands_Property AS WP ON W.code = WP.code
+    WHERE WP.is_evil = 0
 )
+
 SELECT
     id,
     age,
     coins,
     power
-FROM
-    CTE
-WHERE
-    wand_rank = 1
+FROM CTE
+WHERE wand_rank = 1
 ORDER BY
     power DESC,
     age DESC;

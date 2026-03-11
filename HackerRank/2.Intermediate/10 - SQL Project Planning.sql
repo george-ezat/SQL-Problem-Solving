@@ -5,8 +5,7 @@ WITH start_dates AS (
             ORDER BY
                 Start_Date
         ) AS rank
-    FROM
-        Projects
+    FROM Projects
     WHERE
         Start_Date NOT IN (
             SELECT
@@ -14,15 +13,16 @@ WITH start_dates AS (
             FROM
                 Projects
         )
-), end_dates AS (
+),
+
+end_dates AS (
     SELECT
         End_Date,
         ROW_NUMBER() OVER (
             ORDER BY
                 End_Date
         ) AS rank
-    FROM
-        Projects
+    FROM Projects
     WHERE
         End_Date NOT IN (
             SELECT
@@ -31,6 +31,7 @@ WITH start_dates AS (
                 Projects
         )
 )
+
 SELECT
     Start_Date,
     End_Date

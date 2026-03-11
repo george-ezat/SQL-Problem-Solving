@@ -1,23 +1,22 @@
 SELECT
     CASE
-        WHEN G.Grade >= 8 THEN S.Name
-        ELSE NULL
-    END AS Name,
-    G.Grade,
-    S.Marks
+        WHEN g.grade > 7 THEN s.name
+    END AS std_name,
+    g.grade,
+    s.marks
 FROM
-    Students AS S
-    INNER JOIN Grades AS G ON S.Marks BETWEEN G.Min_Mark AND G.Max_Mark
+    students AS s
+    INNER JOIN grades AS g ON s.marks BETWEEN g.min_mark AND g.max_mark
 ORDER BY
-    G.Grade DESC,
+    g.grade DESC,
     CASE
-        WHEN G.Grade >= 8 THEN S.Name
-    END ASC,
+        WHEN g.grade > 7 THEN s.name
+    END,
     CASE
-        WHEN G.Grade < 8 THEN S.Marks
-    END ASC;
+        WHEN g.grade < 8 THEN s.marks
+    END;
 
 
 -- Note: You can not combine these two CASE statements into one statement
---       because the CASE statement can only have one data type returned
+--       because the CASE statement can only return one data type
 --       (S.Name is VARCHAR but S.Marks is INT)

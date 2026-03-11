@@ -1,19 +1,39 @@
-WITH Indexed_Table AS (
+WITH ordered_functions AS (
     SELECT
         X,
         Y,
-        ROW_NUMBER() OVER (ORDER BY X) AS ROW_NUMBER
-    FROM
-        Functions
+        ROW_NUMBER() OVER (ORDER BY X) AS RN
+    FROM functions
 )
+
+SELECT DISTINCT
+    f1.X,
+    f1.Y
+FROM ordered_functions AS f1
+    INNER JOIN ordered_functions AS f2 ON f1.RN != f2.RN
+        AND f1.X = f2.Y
+        AND f1.Y = f2.X
+WHERE f1.X <= f1.Y
+ORDER BY f1.X;
+
+
+-- OR Using UNION ALL (More Optimized)
+
+
 SELECT
-    TOP 50 PERCENT
-    T1.X,
-    T1.Y
-FROM
-    Indexed_Table AS T1
-    JOIN Indexed_Table AS T2 ON T1.X = T2.Y
-    AND T1.Y = T2.X
-    AND T1.row_number <> T2.row_number
-ORDER BY
-    X;
+    f1.X,
+    f1.Y
+FROM Functions AS f1
+    INNER JOIN Functions AS f2 ON f1.X = f2.Y AND f1.Y = f2.X
+WHERE f1.X < f1.Y
+
+UNION ALL
+
+SELECT
+    X,
+    Y
+FROM Functions
+WHERE X = Y
+GROUP BY X, Y
+HAVING COUNT(*) > 1
+ORDER BY X;

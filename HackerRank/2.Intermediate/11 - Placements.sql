@@ -1,19 +1,8 @@
-WITH CTE AS(
-    SELECT
-        S.Name,
-        P.Salary,
-        F.Friend_ID
-    FROM
-        Students AS S
-        JOIN Friends AS F ON S.ID = F.ID
-        JOIN Packages AS P ON S.ID = P.ID
-)
-SELECT
-    Name
+SELECT s.name
 FROM
-    CTE
-    JOIN Packages AS P2 ON CTE.Friend_ID = P2.ID
-WHERE
-    P2.Salary > CTE.Salary
-ORDER BY
-    P2.Salary;
+    students AS s
+    INNER JOIN friends AS f ON s.id = f.id
+    INNER JOIN packages AS p1 ON f.id = p1.id
+    INNER JOIN packages AS p2 ON f.friend_id = p2.id
+WHERE p1.salary < p2.salary
+ORDER BY p2.salary;
