@@ -5,8 +5,8 @@
 -- 110-119 = 110 weight group, etc
 
 SELECT
-  COUNT(patient_id) AS patients_in_group,
-  FLOOR(weight / 10) * 10 AS weight_group
+    COUNT(patient_id) AS patients_in_group,
+    FLOOR(weight / 10) * 10 AS weight_group
 FROM patients
 GROUP BY weight_group
 ORDER BY weight_group DESC;

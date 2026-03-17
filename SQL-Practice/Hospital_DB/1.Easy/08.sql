@@ -8,7 +8,7 @@ WHERE YEAR(birth_date) = 2010;
 
 SELECT COUNT(*) AS total_patients
 FROM patients
-WHERE birth_date between '2010-01-01' AND '2010-12-31';
+WHERE birth_date BETWEEN '2010-01-01' AND '2010-12-31';
 
 -- OR
 

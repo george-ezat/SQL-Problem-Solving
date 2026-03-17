@@ -2,8 +2,8 @@
 
 
 SELECT
-  first_name,
-  last_name,
-  gender
+    first_name,
+    last_name,
+    gender
 FROM patients
 WHERE gender = 'M';

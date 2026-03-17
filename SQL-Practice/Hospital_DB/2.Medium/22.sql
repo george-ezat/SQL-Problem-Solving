@@ -2,9 +2,9 @@
 -- and their doctor's full name who diagnosed their problem.
 
 SELECT
-  CONCAT(P.first_name, ' ', P.last_name) AS patient_name,
-  A.diagnosis,
-  CONCAT(D.first_name, ' ', D.last_name) AS doctor_name
-FROM admissions A
-  INNER JOIN patients P ON A.patient_id = P.patient_id
-  INNER JOIN doctors D ON A.attending_doctor_id = D.doctor_id;
+    CONCAT(p.first_name, ' ', p.last_name) AS patient_name,
+    a.diagnosis,
+    CONCAT(d.first_name, ' ', d.last_name) AS doctor_name
+FROM admissions AS a
+    INNER JOIN patients AS p ON a.patient_id = p.patient_id
+    INNER JOIN doctors AS d ON a.attending_doctor_id = d.doctor_id;

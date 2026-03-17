@@ -2,17 +2,17 @@
 -- and ends with 's' and is at least 6 characters long.
 
 SELECT
-  patient_id,
-  first_name
+    patient_id,
+    first_name
 FROM patients
-where first_name LIKE 's____%s';
+WHERE first_name LIKE 's____%s';
 
 -- OR
 
 SELECT
-  patient_id,
-  first_name
+    patient_id,
+    first_name
 FROM patients
-where
-  first_name LIKE 's%s'
-  AND LEN(first_name) >= 6;
+WHERE
+    first_name LIKE 's%s'
+    AND LEN(first_name) >= 6;

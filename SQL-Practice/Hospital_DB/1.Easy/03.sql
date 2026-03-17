@@ -2,4 +2,4 @@
 
 SELECT first_name
 FROM patients
-WHERE first_name LIKE 'C%'
+WHERE first_name LIKE 'C%';

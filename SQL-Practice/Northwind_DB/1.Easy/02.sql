@@ -2,9 +2,8 @@
 -- which are not from 'Germany', 'Mexico', 'Spain'
 
 SELECT
-  contact_name,
-  address,
-  city
+    contact_name,
+    address,
+    city
 FROM customers
-WHERE
-  country NOT IN ('Germany', 'Mexico', 'Spain');
+WHERE country NOT IN ('Germany', 'Mexico', 'Spain');

@@ -2,8 +2,8 @@
 -- for each category rounded to 2 decimal places.
 
 SELECT
-  C.category_name,
-  ROUND(AVG(P.unit_price), 2) AS average_unit_price
-FROM products P
-  INNER JOIN categories C ON P.category_id = C.category_id
-GROUP BY C.category_name;
+    c.category_name,
+    ROUND(AVG(p.unit_price), 2) AS average_unit_price
+FROM products AS p
+    INNER JOIN categories AS c ON p.category_id = c.category_id
+GROUP BY c.category_name;

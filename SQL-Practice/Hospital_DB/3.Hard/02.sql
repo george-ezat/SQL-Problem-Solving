@@ -5,13 +5,13 @@
 -- height is in units cm
 
 SELECT
-  patient_id,
-  weight,
-  height,
-  CASE
-    WHEN weight / POWER((height / 100.0), 2) >= 30 THEN 1
-    ELSE 0
-  END AS isObese
+    patient_id,
+    weight,
+    height,
+    CASE
+        WHEN weight / POWER((height / 100.0), 2) >= 30 THEN 1
+        ELSE 0
+    END AS isObese
 FROM patients;
 
 -- You should either CAST height to float, or divide by 100.0 (not 100).

@@ -5,25 +5,27 @@
 
 
 -- Preferred solution
-WITH CTE AS(
+WITH cte AS (
     SELECT
-      first_name,
-      COUNT(first_name) AS cnt
+        first_name,
+        COUNT(first_name) AS cnt
     FROM patients
     GROUP BY first_name
     HAVING COUNT(first_name) = 1
 )
+
 SELECT first_name
-FROM CTE;
+FROM cte;
+
 
 -- OR
 
 SELECT first_name
 FROM (
     SELECT
-      first_name,
-      COUNT(first_name) AS cnt
+        first_name,
+        COUNT(first_name) AS cnt
     FROM patients
     GROUP BY first_name
     HAVING COUNT(first_name) = 1
-);
+) AS t;

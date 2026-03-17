@@ -6,12 +6,12 @@
 --   2. the numerical length of patient's last_name
 --   3. year of patient's birth_date
 
-SELECT
-  DISTINCT P.patient_id,
-  CONCAT(
-    P.patient_id,
-    LEN(P.last_name),
-    YEAR(P.birth_date)
-  ) AS temp_password
-FROM patients P
-  INNER JOIN admissions A ON P.patient_id = A.patient_id;
+SELECT DISTINCT
+    p.patient_id,
+    CONCAT(
+        p.patient_id,
+        LEN(p.last_name),
+        YEAR(p.birth_date)
+    ) AS temp_password
+FROM patients AS p
+    INNER JOIN admissions AS a ON p.patient_id = a.patient_id;

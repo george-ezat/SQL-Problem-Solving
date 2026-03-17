@@ -2,10 +2,10 @@
 -- where allergies are not null and are from the city of 'Hamilton'
 
 SELECT
-  first_name,
-  last_name,
-  allergies
+    first_name,
+    last_name,
+    allergies
 FROM patients
 WHERE
-  allergies IS NOT NULL
-  AND city = 'Hamilton';
+    allergies IS NOT NULL
+    AND city = 'Hamilton';

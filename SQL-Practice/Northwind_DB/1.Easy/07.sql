@@ -2,8 +2,8 @@
 -- customers that has a fax number. (not null)
 
 SELECT
-  company_name,
-  contact_name,
-  fax
+    company_name,
+    contact_name,
+    fax
 FROM customers
 WHERE fax IS NOT NULL;

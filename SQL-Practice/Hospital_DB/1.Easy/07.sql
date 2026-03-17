@@ -1,9 +1,9 @@
 -- Show first name, last name, and the full province name of each patient.
 -- Example: 'Ontario' instead of 'ON'
 
-select
-  first_name,
-  last_name,
-  province_name
-FROM patients P
-  INNER JOIN province_names PN ON P.province_id = PN.province_id;
+SELECT
+    p.first_name,
+    p.last_name,
+    pn.province_name
+FROM patients AS p
+    INNER JOIN province_names AS pn ON p.province_id = pn.province_id;

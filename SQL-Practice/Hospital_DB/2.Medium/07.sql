@@ -3,13 +3,13 @@
 -- ordered ascending by allergies then by first_name then by last_name.
 
 SELECT
-  first_name,
-  last_name,
-  allergies
+    first_name,
+    last_name,
+    allergies
 FROM patients
 WHERE
-  allergies IN('Penicillin', 'Morphine')
+    allergies IN ('Penicillin', 'Morphine')
 ORDER BY
-  allergies ASC,
-  first_name ASC,
-  last_name ASC;
+    allergies ASC,
+    first_name ASC,
+    last_name ASC;

@@ -2,9 +2,9 @@
 -- from the products, suppliers, and categories table
 
 SELECT
-  P.product_name,
-  S.company_name,
-  C.category_name
-FROM products P
-  INNER JOIN suppliers S ON P.supplier_id = S.supplier_id
-  INNER JOIN categories C ON P.category_id = C.category_id;
+    p.product_name,
+    s.company_name,
+    c.category_name
+FROM products AS p
+    INNER JOIN suppliers AS s ON p.supplier_id = s.supplier_id
+    INNER JOIN categories AS c ON p.category_id = c.category_id;

@@ -4,21 +4,24 @@
 -- Add up the admission_total cost for each has_insurance group.
 
 SELECT
-  CASE WHEN patient_id % 2 = 0 THEN 'Yes' ELSE 'No' END AS has_insurance,
-  SUM(CASE WHEN patient_id % 2 = 0 THEN 10 ELSE 50 END) AS cost_after_insurance
+    CASE WHEN patient_id % 2 = 0 THEN 'Yes' ELSE 'No' END AS has_insurance,
+    SUM(CASE WHEN patient_id % 2 = 0 THEN 10 ELSE 50 END)
+        AS cost_after_insurance
 FROM admissions
 GROUP BY has_insurance;
 
 -- OR
 
+WITH cte AS (
+    SELECT
+        patient_id,
+        CASE WHEN patient_id % 2 = 0 THEN 'Yes' ELSE 'No' END AS has_insurance,
+        CASE WHEN patient_id % 2 = 0 THEN 10 ELSE 50 END AS admission_cost
+    FROM admissions
+)
+
 SELECT
-  has_insurance,
-  SUM(admission_cost) AS cost_after_insurance
-FROM
-(
-   SELECT patient_id,
-   CASE WHEN patient_id % 2 = 0 THEN 'Yes' ELSE 'No' END AS has_insurance,
-   CASE WHEN patient_id % 2 = 0 THEN 10 ELSE 50 END AS admission_cost
-   FROM admissions
-) T
+    has_insurance,
+    SUM(admission_cost) AS cost_after_insurance
+FROM cte
 GROUP BY has_insurance;

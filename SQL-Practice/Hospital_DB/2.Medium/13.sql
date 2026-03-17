@@ -5,14 +5,12 @@
 -- Order the list by the first_name in decending order
 -- EX: SMITH,jane
 
-SELECT
-  CONCAT(UPPER(last_name), ',', LOWER(first_name)) AS new_name_format
+SELECT CONCAT(UPPER(last_name), ',', LOWER(first_name)) AS new_name_format
 FROM patients
 ORDER BY first_name DESC;
 
 -- OR
 
-SELECT
-  UPPER(last_name) || ',' || LOWER(first_name) AS new_name_format
+SELECT UPPER(last_name) || ',' || LOWER(first_name) AS new_name_format
 FROM patients
 ORDER BY first_name DESC;

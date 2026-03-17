@@ -3,15 +3,17 @@
 -- 'suppliers' depending on the table it came from.
 
 SELECT
-  city,
-  company_name,
-  contact_name,
-  'customers' AS relationship
+    city,
+    company_name,
+    contact_name,
+    'customers' AS relationship
 FROM customers
-UNION
+
+UNION ALL
+
 SELECT
-  city,
-  company_name,
-  contact_name,
-  'suppliers' AS relationship
+    city,
+    company_name,
+    contact_name,
+    'suppliers' AS relationship
 FROM suppliers;

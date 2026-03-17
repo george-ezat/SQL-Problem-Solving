@@ -4,8 +4,8 @@
 SELECT province_name
 FROM province_names
 ORDER BY
-  CASE
-    WHEN province_name = 'Ontario' THEN 1
-    ELSE 2
-  END,
-  province_name ASC;
+    CASE
+        WHEN province_name = 'Ontario' THEN 1
+        ELSE 2
+    END,
+    province_name ASC;

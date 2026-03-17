@@ -8,12 +8,12 @@
 -- Convert KG to pounds by multiplying by 2.205.
 
 SELECT
-  CONCAT(first_name, ' ', last_name) AS patient_name,
-  ROUND(height / 30.48, 1) AS height_in_feet,
-  ROUND(weight * 2.205, 0) AS weight_in_pound,
-  birth_date,
-  CASE
-    WHEN gender = 'M' THEN 'MALE'
-    WHEN gender = 'F' THEN 'FEMALE'
-  END AS gender_type
+    CONCAT(first_name, ' ', last_name) AS patient_name,
+    ROUND(height / 30.48, 1) AS height_in_feet,
+    ROUND(weight * 2.205, 0) AS weight_in_pound,
+    birth_date,
+    CASE
+        WHEN gender = 'M' THEN 'MALE'
+        WHEN gender = 'F' THEN 'FEMALE'
+    END AS gender_type
 FROM patients;

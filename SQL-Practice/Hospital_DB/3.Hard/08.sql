@@ -2,12 +2,13 @@
 -- Round the answer to the nearest hundredth number and in percent form.
 
 SELECT
-  CONCAT(
-    ROUND(
-      CAST(SUM(gender = 'M') AS FLOAT)
-      	/ COUNT(*) * 100
-      ,2)
-    ,'%') AS male_percentage
+    CONCAT(
+        ROUND(
+            CAST(SUM(gender = 'M') AS FLOAT) / COUNT(*) * 100,
+            2
+        ),
+        '%'
+    ) AS male_percentage
 FROM patients;
 
 
