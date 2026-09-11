@@ -1,4 +1,4 @@
-WITH borrowed AS(
+WITH borrowed AS (
     SELECT
         book_id,
         COUNT(*) AS cnt
@@ -9,19 +9,18 @@ WITH borrowed AS(
     GROUP BY
         book_id
 )
+
 SELECT
-    LB.book_id,
-    LB.title,
-    LB.author,
-    LB.genre,
-    LB.publication_year,
-    LB.total_copies AS current_borrowers
+    lb.book_id,
+    lb.title,
+    lb.author,
+    lb.genre,
+    lb.publication_year,
+    lb.total_copies AS current_borrowers
 FROM
-    library_books AS LB
-    JOIN borrowed AS B ON LB.book_id = B.book_id
-    AND LB.total_copies = B.cnt
+    library_books AS lb
+    INNER JOIN borrowed AS b ON lb.book_id = b.book_id
+        AND lb.total_copies = b.cnt
 ORDER BY
     current_borrowers DESC,
-    LB.title;
-
--- You can use subquery with IN instead, but this is more readable.
+    lb.title ASC;

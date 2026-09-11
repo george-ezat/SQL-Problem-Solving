@@ -1,7 +1,7 @@
 WITH latest_changes AS (
     SELECT
         product_id,
-        MAX(change_date) AS change_date
+        MAX(change_date) AS latest_change_date
     FROM
         Products
     WHERE
@@ -11,22 +11,23 @@ WITH latest_changes AS (
 ),
 latest_prices AS (
     SELECT
-        P.product_id,
-        P.new_price AS price
+        l.product_id,
+        p.new_price AS price
     FROM
-        Products AS P
-        JOIN latest_changes AS L ON P.product_id = L.product_id
-        AND P.change_date = L.change_date
+        latest_changes AS l
+        INNER JOIN Products AS p ON l.product_id = p.product_id
+            AND l.latest_change_date = p.change_date
 ),
-distinct_products AS (
+initial_prices AS (
     SELECT DISTINCT
-        product_id
+        product_id,
+        10 AS initial_price
     FROM
         Products
 )
 SELECT
-    DP.product_id,
-    COALESCE(LP.price, 10) AS price
+    p.product_id,
+    COALESCE(lp.price, p.initial_price) AS price
 FROM
-    distinct_products AS DP
-    LEFT JOIN latest_prices AS LP ON DP.product_id = LP.product_id;
+    initial_prices AS p
+    LEFT JOIN latest_prices AS lp ON p.product_id = lp.product_id;

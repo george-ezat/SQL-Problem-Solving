@@ -1,10 +1,8 @@
--- MySQL solution
-
 SELECT
     tweet_id
 FROM
-    Tweets
+    tweets
 WHERE
-    LENGTH(content) > 15;
+    LEN(content) > 15;
 
--- In SQL Server it may give a time limit !!
+-- In PostgreSQL and MySQL: LENGTH(content) > 15

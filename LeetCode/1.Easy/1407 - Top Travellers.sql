@@ -1,12 +1,12 @@
 SELECT
-    U.name,
-    COALESCE(SUM(R.distance), 0) AS travelled_distance
+    u.name,
+    COALESCE(SUM(r.distance), 0) AS traveled_distance
 FROM
-    Users AS U
-    LEFT JOIN Rides AS R ON U.id = R.user_id
+    Users AS u
+    LEFT JOIN Rides AS r ON u.id = r.user_id
 GROUP BY
-    U.id, -- grouping by this column will help if two(or more) users have the same name
-    U.name
+    u.id, -- grouping by this column will help if two(or more) users have the same name
+    u.name
 ORDER BY
-    travelled_distance DESC,
-    U.name;
+    traveled_distance DESC,
+    u.name ASC;

@@ -1,11 +1,18 @@
+WITH account_tsc AS (
+    SELECT
+        account,
+        SUM(amount) AS balance
+    FROM
+        transactions
+    GROUP BY
+        account
+    HAVING
+        SUM(amount) > 10000
+)
+
 SELECT
-    U.name,
-    SUM(T.amount) AS balance
+    u.name,
+    t.balance
 FROM
-    Users AS U
-    JOIN Transactions AS T ON U.account = T.account
-GROUP BY
-    U.account, -- this help if two(or more) has the same name
-    U.name
-HAVING
-    SUM(T.amount) > 10000;
+    account_tsc AS t
+    INNER JOIN users AS u ON t.account = u.account;

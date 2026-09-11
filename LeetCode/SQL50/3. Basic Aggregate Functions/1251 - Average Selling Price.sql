@@ -1,11 +1,12 @@
 SELECT
-    P.product_id,
-    COALESCE(
-        CAST(SUM(P.price * U.units) / SUM(U.units) AS DECIMAL(10,2))
-        , 0) AS average_price
+    p.product_id,
+    ROUND(
+        COALESCE(SUM(1.0 * us.units * p.price) / SUM(us.units), 0),
+        2
+    ) AS average_price
 FROM
-    Prices AS P
-    LEFT JOIN UnitsSold AS U ON U.product_id = P.product_id
-    AND U.purchase_date BETWEEN P.start_date AND P.end_date
+    Prices AS p
+    LEFT JOIN UnitsSold AS us ON p.product_id = us.product_id
+        AND us.purchase_date BETWEEN p.start_date AND p.end_date
 GROUP BY
-    P.product_id;
+    p.product_id;

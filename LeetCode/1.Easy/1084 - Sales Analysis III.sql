@@ -1,12 +1,17 @@
+WITH q1 AS (
+    SELECT
+        product_id
+    FROM
+        sales
+    GROUP BY
+        product_id
+    HAVING
+        MIN(sale_date) >= '2019-01-01'
+        AND MAX(sale_date) <= '2019-03-31'
+)
+
 SELECT
-    P.product_id,
-    P.product_name
-FROM
-    Product AS P
-    JOIN Sales AS S ON P.product_id = S.product_id
-GROUP BY
-    P.product_id,
-    P.product_name
-HAVING
-    MIN(S.sale_date) >= '2019-01-01'
-    AND MAX(S.sale_date) <= '2019-03-31';
+    q1.product_id,
+    p.product_name
+FROM q1
+    INNER JOIN product AS p ON q1.product_id = p.product_id;

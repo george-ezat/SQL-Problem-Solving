@@ -1,9 +1,7 @@
 -- PostgreSQL
 
 SELECT
-    product_id,
-    product_name,
-    description
+    *
 FROM
     products
 WHERE

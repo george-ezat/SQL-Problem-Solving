@@ -5,25 +5,22 @@ WITH first_orders AS (
         order_date,
         customer_pref_delivery_date,
         ROW_NUMBER() OVER (
-            PARTITION BY
-                customer_id
-            ORDER BY
-                order_date
-        ) AS order_rank
+            PARTITION BY customer_id
+            ORDER BY order_date
+        ) AS rnk
     FROM
         Delivery
 )
 SELECT
     ROUND(
-        AVG(
+        100.0 * AVG(
             CASE
-                WHEN order_date = customer_pref_delivery_date THEN 1.0
-                ELSE 0.0
+                WHEN order_date = customer_pref_delivery_date THEN 1
+                ELSE 0
             END
-        ) * 100.0,
-        2
+        ), 2
     ) AS immediate_percentage
 FROM
     first_orders
 WHERE
-    order_rank = 1;
+    rnk = 1;

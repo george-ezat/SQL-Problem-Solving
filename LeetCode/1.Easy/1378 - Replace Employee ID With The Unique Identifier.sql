@@ -1,6 +1,6 @@
 SELECT
-    U.unique_id,
-    E.name
+    u.unique_id,
+    e.name
 FROM
-    Employees AS E
-    LEFT JOIN EmployeeUNI AS U ON E.id = U.id;
+    Employees AS e
+    LEFT JOIN EmployeeUNI AS u ON e.id = u.id;

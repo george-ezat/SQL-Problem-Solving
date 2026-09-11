@@ -13,3 +13,7 @@ FROM
 GROUP BY
     LEFT(trans_date, 7),
     country;
+
+-- In PostgreSQL Use --> LEFT(trans_date::VARCHAR, 7)
+-- You can also make other solutions using FORMAT() and its
+-- equivalent across different RDBMSs.

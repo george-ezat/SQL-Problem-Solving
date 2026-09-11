@@ -52,11 +52,11 @@ I am consistently solving problems across multiple platforms to maintain sharp q
 
 | Platform              |  Easy   | Medium |  Hard  |  Total  |
 | :-------------------- | :-----: | :----: | :----: | :-----: |
-| **LeetCode**          |   56    |   31   |   7    | **94**  |
+| **LeetCode**          |   55    |   35   |   7    | **97**  |
 | **DataLemur**         |   21    |   19   |   3    | **43**  |
 | **HackerRank**        |   40    |   13   |   4    | **57**  |
 | **SQL-Practice**      |   25    |   31   |   13   | **69**  |
-| **Overall Total**     | **142** | **90** | **27** | **263** |
+| **Overall Total**     | **141** | **98** | **27** | **266** |
 
 > ***Note:** Problem counts are updated regularly as I complete new challenges.*
 

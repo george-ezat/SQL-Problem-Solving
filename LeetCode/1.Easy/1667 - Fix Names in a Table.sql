@@ -1,9 +1,9 @@
 SELECT
     user_id,
-    CONCAT(UPPER(LEFT(name, 1)), LOWER(SUBSTRING(name, 2, LEN(name)))) AS name
+    CONCAT(UPPER(LEFT(name, 1)), LOWER(RIGHT(name, LEN(name) - 1))) AS name
 FROM
-    Users
+    users
 ORDER BY
     user_id;
 
--- In MySQL use LENGTH() instead of LEN()
+-- In PostgreSQL and MySQL use LENGTH() instead of LEN()

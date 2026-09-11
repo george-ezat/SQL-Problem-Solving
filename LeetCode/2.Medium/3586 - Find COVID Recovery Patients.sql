@@ -1,28 +1,35 @@
-WITH FirstPositive AS (
+WITH positive_patients AS (
     SELECT
         patient_id,
-        MIN(test_date) AS first_pos_date
-    FROM covid_tests
-    WHERE result = 'Positive'
-    GROUP BY patient_id
+        MIN(test_date) AS first_pos
+    FROM
+        covid_tests
+    WHERE
+        result = 'Positive'
+    GROUP BY
+        patient_id
+),
+recovered_patients AS (
+    SELECT
+        pp.patient_id,
+        MIN(ct.test_date) - pp.first_pos AS recovery_time
+    FROM
+        positive_patients AS pp
+        INNER JOIN covid_tests AS ct ON pp.patient_id = ct.patient_id
+            AND ct.result = 'Negative'
+            AND pp.first_pos < ct.test_date
+    GROUP BY
+        pp.patient_id,
+        pp.first_pos
 )
 SELECT
-    p.patient_id,
+    rp.patient_id,
     p.patient_name,
     p.age,
-    MIN(t.test_date) - fp.first_pos_date AS recovery_time
-    -- Replacement for SQL Server:
-    -- DATEDIFF(DAY, fp.first_pos_date, MIN(t.test_date)) AS recovery_time
-FROM FirstPositive fp
-    JOIN covid_tests t ON fp.patient_id = t.patient_id 
-        AND t.result = 'Negative'
-        AND t.test_date > fp.first_pos_date
-    JOIN patients p ON fp.patient_id = p.patient_id
-GROUP BY
-    p.patient_id,
-    p.patient_name,
-    p.age,
-    fp.first_pos_date
+    rp.recovery_time
+FROM
+    recovered_patients AS rp
+    INNER JOIN patients AS p ON rp.patient_id = p.patient_id
 ORDER BY
-    recovery_time,
-    p.patient_name;
+    rp.recovery_time ASC,
+    p.patient_name ASC;

@@ -1,16 +1,18 @@
 -- PostgreSQL solution (The easiest)
 
-SELECT *
+SELECT
+    *
 FROM
-    Users
+    users
 WHERE
     mail ~ '^[A-Za-z][A-Za-z0-9\.\_\-]*@leetcode\.com$';
 
 -- MySQL solution
 
-SELECT *
+SELECT
+    *
 FROM
-    Users
+    users
 WHERE
     mail REGEXP '^[A-Za-z][A-Za-z0-9\.\_\-]*@leetcode\\.com$';
     -- in MySQL inside the string you must escape the backslash itself >> \\.com

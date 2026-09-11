@@ -1,16 +1,16 @@
 SELECT
-    M.employee_id,
-    M.name,
-    COUNT(E.employee_id) AS reports_count,
-    ROUND(AVG(E.age)) AS average_age
+    m.employee_id,
+    m.name,
+    COUNT(e.employee_id) AS reports_count,
+    ROUND(AVG(e.age)) AS average_age
 FROM
-    Employees AS M
-    JOIN Employees AS E ON M.employee_id = E.reports_to
+    employees AS m
+    INNER JOIN employees AS e ON m.employee_id = e.reports_to
 GROUP BY
-    M.employee_id,
-    M.name
+    m.employee_id,
+    m.name
 ORDER BY
-    M.employee_id;
+    m.employee_id;
 
 
 -- In SQL Server: cast the age to decimal and add the second parameter in ROUND (0)

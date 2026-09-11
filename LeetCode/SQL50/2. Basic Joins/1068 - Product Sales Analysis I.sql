@@ -1,7 +1,7 @@
 SELECT
-    P.product_name,
-    S.year,
-    S.price
+    p.product_name,
+    s.year,
+    s.price
 FROM
-    Sales AS S
-    JOIN Product AS P ON S.product_id = P.product_id;
+    Sales AS s
+    INNER JOIN Product AS p ON s.product_id = p.product_id;

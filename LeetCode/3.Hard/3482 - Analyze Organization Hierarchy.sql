@@ -9,12 +9,12 @@ WITH levels_cte AS (
 
     UNION ALL
 
-    SELECT 
+    SELECT
         e.employee_id,
         e.employee_name,
         l.level + 1
-    FROM Employees e
-    JOIN levels_cte l ON e.manager_id = l.employee_id
+    FROM Employees AS e
+        INNER JOIN levels_cte AS l ON e.manager_id = l.employee_id
 ),
 relationships_cte AS (
     -- Map every manager to all their descendants (direct & indirect)
@@ -31,8 +31,8 @@ relationships_cte AS (
         rc.manager_id,
         e.employee_id,
         e.salary
-    FROM relationships_cte rc
-    JOIN Employees e ON rc.member_id = e.manager_id
+    FROM relationships_cte AS rc
+        INNER JOIN Employees AS e ON rc.member_id = e.manager_id
 )
 SELECT
     l.employee_id,
@@ -41,8 +41,8 @@ SELECT
     -- Subtract 1 to exclude the manager themselves
     COUNT(r.member_id) - 1 AS team_size,
     SUM(r.member_salary) AS budget
-FROM levels_cte l
-    JOIN relationships_cte r ON l.employee_id = r.manager_id
+FROM levels_cte AS l
+    INNER JOIN relationships_cte AS r ON l.employee_id = r.manager_id
 GROUP BY
     l.employee_id,
     l.employee_name,

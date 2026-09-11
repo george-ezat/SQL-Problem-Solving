@@ -1,8 +1,7 @@
 -- PostgreSQL Solution
 
 SELECT
-    user_id,
-    email
+    *
 FROM
     Users
 WHERE

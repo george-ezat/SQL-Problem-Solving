@@ -1,22 +1,24 @@
-WITH UserCategories AS (
+WITH category_sales AS (
     SELECT DISTINCT
-        p.user_id,
+        pp.user_id,
         i.category
-    FROM ProductPurchases AS p
-        INNER JOIN ProductInfo AS i ON p.product_id = i.product_id
+    FROM
+        ProductPurchases AS pp
+        INNER JOIN ProductInfo AS i ON pp.product_id = i.product_id
 )
-
 SELECT
-    t1.category AS category1,
-    t2.category AS category2,
-    COUNT(t1.user_id) AS customer_count
-FROM UserCategories AS t1
-    INNER JOIN UserCategories AS t2 ON t1.user_id = t2.user_id
-        AND t1.category < t2.category
+    c1.category AS category1,
+    c2.category AS category2,
+    COUNT(*) AS customer_count
+FROM
+    category_sales AS c1
+    INNER JOIN category_sales AS c2 ON c1.user_id = c2.user_id
+        AND c1.category < c2.category
 GROUP BY
-    t1.category,
-    t2.category
-HAVING COUNT(t1.user_id) > 2
+    c1.category,
+    c2.category
+HAVING
+    COUNT(*) >= 3
 ORDER BY
     customer_count DESC,
     category1 ASC,

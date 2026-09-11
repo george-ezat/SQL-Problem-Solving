@@ -1,46 +1,46 @@
--- MySQL
-
-WITH greatest_ratings AS (
+WITH user_ratings AS (
     SELECT
-        U.name AS user_name,
-        COUNT(MR.movie_id) AS cnt
+        user_id,
+        COUNT(*) AS ratings_count
+    FROM MovieRating
+    GROUP BY user_id
+),
+top_user AS (
+    SELECT u.name AS user_name
     FROM
-        MovieRating AS MR
-        JOIN Users AS U ON MR.user_id = U.user_id
-    GROUP BY
-        U.user_id,
-        U.name
+        user_ratings AS ur
+        INNER JOIN users AS u ON ur.user_id = u.user_id
     ORDER BY
-        cnt DESC,
-        user_name
+        ratings_count DESC,
+        user_name ASC
     LIMIT 1
-), highest_avg_movie AS (
+),
+movie_feb_ratings AS (
     SELECT
-        M.title AS movie_name,
-        AVG(rating) AS avg_rating
+        movie_id,
+        AVG(rating::DECIMAL) AS average_rating
     FROM
-        MovieRating AS MR
-        JOIN Movies AS M ON MR.movie_id = M.movie_id
+        MovieRating
     WHERE
-        created_at LIKE '2020-02%'
-    GROUP BY
-        M.movie_id,
-        M.title
+        created_at >= '2020-02-01'
+        AND created_at < '2020-03-01'
+    GROUP BY movie_id
+),
+top_movie AS (
+    SELECT m.title AS movie_title
+    FROM
+        movie_feb_ratings AS mr
+        INNER JOIN movies AS m ON mr.movie_id = m.movie_id
     ORDER BY
-        avg_rating DESC,
-        movie_name
+        average_rating DESC,
+        movie_title ASC
     LIMIT 1
 )
-SELECT
-    user_name AS results
-FROM
-    greatest_ratings
+SELECT user_name AS results
+FROM top_user
 UNION ALL
-SELECT
-    movie_name
-FROM
-    highest_avg_movie;
+SELECT movie_title
+FROM top_movie;
 
 
--- In SQL Server: use TOP 1 instead of LIMIT 1
--- and cast the rating to Decimal calc the right avg
+-- This solution is optimized to aggregate before joining tables
